@@ -1,9 +1,8 @@
 from sqlalchemy import create_engine
-from sqlalchemy_utils import database_exists, create_database, drop_database
-import sqlalchemy
+from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import sessionmaker
 import csv
 
 # username shashi and password shashi is for test only

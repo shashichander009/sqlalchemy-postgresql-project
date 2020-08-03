@@ -1,6 +1,4 @@
-import csv
 import json
-import requests
 from create_db import session
 from create_db import RegionData
 
