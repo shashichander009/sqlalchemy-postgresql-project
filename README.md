@@ -23,30 +23,38 @@ install all dependencies
 pip install -r requirements.txt
 ```
 
-Last Step, run the program 
-
-```bash
-python un_data_analysis.py
-```
 
 ## Usage
 
 This project assumes that data is already there in the project. If you can't find "data.csv" in the root folder, download it from this [link]( https://datahub.io/core/population-growth-estimates-and-projections/r/population-estimates.csv) and place it in the root folder with the name "data.csv"
 
-Once you are done, run the http server
+
+Start by running create_db.py. This will create a database and load all csv values in PostgresSQL database
 
 ```bash
-python3 -m http.server
+python3 create_db.py
 ```
 
-Open index.html to view charts
+Next Step, run the program. This will prepare JSON values for charting
+
+```bash
+python un_data_analysis.py
+```
+
+To view charts, open index.html 
+
+Final step, run delete_db.py to remove database
+
+```bash
+python3 delete_db.py
+```
+
+
+
+
+
+
 
 
 ## Deployment
-
-This project is deployed at: https://dataproject-js-un-shashi.herokuapp.com/ 
-
-
-Thank you 
-
-
+No Deployment. Run this from your system

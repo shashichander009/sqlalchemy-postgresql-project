@@ -1,7 +1,8 @@
 import csv
 import json
 import requests
-
+from create_db import session
+from create_db import RegionData
 
 UN_DATA_URL = 'https://datahub.io/core/population-\
 growth-estimates-and-projections/r/population-estimates.csv'
@@ -50,12 +51,12 @@ population = []
 
 
 def read_data():
-    with open('data.csv', 'r') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for line in csv_reader:
-            region.append(line[0])
-            year.append(line[2])
-            population.append(line[3])
+    data_clear()
+    result = session.query(RegionData).all()
+    for row in result:
+        region.append(row.country)
+        year.append(row.year)
+        population.append(row.population)
 
 
 # PROBLEM NO 1
@@ -66,7 +67,6 @@ def india_data_process():
     # This dictionary will store India's data with year as Key
     # and Population as Values. We will keep only last two digits of year and
     # store population in crores
-    read_data()
     for i in range(len(region)):
         if region[i] == 'India':
             population_in_crores = round(float(population[i]) / 10000, 2)
@@ -84,10 +84,8 @@ def india_data_process():
 def asean_data_process():
     asean_data = {}
 
-    read_data()
-
     for i in range(len(region)):
-        if region[i] in ASEAN_COUNTRIES and year[i] == '2014':
+        if region[i] in ASEAN_COUNTRIES and year[i] == 2014:
             population_in_crores = round(float(population[i]) / 10000, 2)
             asean_data[region[i]] = population_in_crores
 
@@ -103,8 +101,6 @@ def asean_data_process():
 
 def saarc_data_process():
     saarc_data = {}
-
-    read_data()
 
     for i in range(len(region)):
         if region[i] in SAARC_COUNTRIES:
@@ -129,8 +125,6 @@ def asean_group_data_process():
     # The key will be concat of Year + Country
     # The value will be population
 
-    read_data()
-
     for i in range(len(region)):
         if region[i] in ASEAN_COUNTRIES:
             if 2011 <= int(year[i]) <= 2015:
@@ -149,17 +143,6 @@ def asean_group_data_process():
         fs.write(json.dumps(asean_grp_data))
 
 
-# This is our main function which will allow users
-# to Download Data as well as view those charts
-
-
-# def main():
-#     india_data_process()
-#     asean_data_process()
-#     saarc_data_process()
-#     asean_group_data_process()
-
-
 def data_clear():
     region.clear()
     population.clear()
@@ -167,13 +150,12 @@ def data_clear():
 
 
 def main():
+    read_data()
     india_data_process()
-    data_clear()
     asean_data_process()
-    data_clear()
     saarc_data_process()
-    data_clear()
     asean_group_data_process()
+    data_clear()
 
 
 if __name__ == '__main__':
