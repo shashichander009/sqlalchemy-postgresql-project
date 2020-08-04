@@ -10,8 +10,11 @@ We are using data released by [United Nations]( https://datahub.io/core/populati
 
 This project is built with 
 Backend : Python 3.7.4
+
 Frontend : HTML, CSS, JavaScript
+
 Database : PostgresSQL
+
 Charting : Highcharts
 
 
@@ -71,7 +74,7 @@ python3 -m http.server
 
 Now go the root folder then to the frontened folder.
 
-Open index.html in your favourite browser. 
+Finally, Open index.html in your favourite browser and click on relevant buttons to view charts. 
 
 
 ### TO DELETE DATABASE 
