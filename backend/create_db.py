@@ -1,9 +1,7 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Column, Integer, String, Float
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float
 from cred import username, password
-
 
 # username shashi and password shashi is for test only
 

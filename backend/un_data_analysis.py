@@ -1,8 +1,7 @@
 import json
 from add_data import session
 from create_db import RegionData
-from sqlalchemy import and_
-from sqlalchemy import func
+from sqlalchemy import and_, func
 
 ASEAN_COUNTRIES = [
     'Brunei Darussalam',
