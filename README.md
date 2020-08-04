@@ -8,7 +8,12 @@ We are using data released by [United Nations]( https://datahub.io/core/populati
 
 ## Language and Libraries
 
-This project is built with HTML, CSS, JavaScript and Python 3.7.4. For charting, we have used [highcharts]( https://www.highcharts.com/)
+This project is built with 
+
+Backend : Python 3.7.4
+Frontend : HTML, CSS, JavaScript
+Database : PostgresSQL
+Charting : Highcharts
 
 
 ## Installation
@@ -35,7 +40,11 @@ First check if data.csv is present. If you can't find "data.csv" in the folder, 
 
 Go to cred.py and change your username and password 
 
-Start by running create_db.py. This will create a database 
+ To create our PostgreSQL database, run this command 
+
+```bash
+python3 create_db.py
+```
 
 ### ADDING DATA TO OUR DATABASE 
 
@@ -50,7 +59,7 @@ python3 add_data.py
 To prepare JSON values for charting, run the program. 
 
 ```bash
-python un_data_analysis.py
+python3 un_data_analysis.py
 ```
 
 ### TO VIEW CHARTS 
