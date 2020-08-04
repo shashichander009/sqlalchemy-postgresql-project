@@ -26,24 +26,49 @@ pip install -r requirements.txt
 
 ## Usage
 
-This project assumes that data is already there in the project. If you can't find "data.csv" in the root folder, download it from this [link]( https://datahub.io/core/population-growth-estimates-and-projections/r/population-estimates.csv) and place it in the root folder with the name "data.csv"
+### DATABASE SETTING UP
+
+Go to the "backend" folder 
+
+First check if data.csv is present. If you can't find "data.csv" in the folder, download it from this [link]( https://datahub.io/core/population-growth-estimates-and-projections/r/population-estimates.csv) and place it in the root folder with the name "data.csv"
 
 
-Start by running create_db.py. This will create a database and load all csv values in PostgresSQL database
+Go to cred.py and change your username and password 
+
+Start by running create_db.py. This will create a database 
+
+### ADDING DATA TO OUR DATABASE 
+
+To load all csv values in PostgresSQL database. Run this 
 
 ```bash
-python3 create_db.py
+python3 add_data.py
 ```
 
-Next Step, run the program. This will prepare JSON values for charting
+### JSON DATA PREPARATION 
+
+To prepare JSON values for charting, run the program. 
 
 ```bash
 python un_data_analysis.py
 ```
 
-To view charts, open index.html 
+### TO VIEW CHARTS 
 
-Final step, run delete_db.py to remove database
+To Serve the html, js and json files with python http.server we need to run this 
+
+```bash
+python3 -m http.server
+```
+
+Now go the root folder then to the frontened folder.
+
+Open index.html 
+
+
+### TO DELETE DATABASE 
+
+Once you are done viewing charts, go to the backend folder and run 
 
 ```bash
 python3 delete_db.py

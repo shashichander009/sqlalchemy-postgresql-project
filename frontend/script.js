@@ -4,7 +4,7 @@
 //  This function prepares a Bar Plot of India's population vs. years.
 
 function prepIndiaChart() {
-  fetch("/json/data1.json")
+  fetch("/backend/json/data1.json")
     .then(res => {
       return res.json();
     })
@@ -60,7 +60,7 @@ function prepIndiaChart() {
 //  ASEAN is a collection of South East Asian countries.
 
 function prepAseanChart() {
-  fetch("/json/data2.json")
+  fetch("/backend/json/data2.json")
     .then(response => {
       return response.json();
     })
@@ -127,7 +127,7 @@ function prepAseanChart() {
 //  Then plot a BAR CHART of Total SAARC population vs. year.
 
 function prepSaarcChart() {
-  fetch("/json/data3.json")
+  fetch("/backend/json/data3.json")
     .then(response => {
       return response.json();
     })
@@ -184,7 +184,7 @@ function prepSaarcChart() {
 //  groups over the years 2011 - 2015.
 
 function prepAseanGroupChart() {
-  fetch("/json/data4.json")
+  fetch("/backend/json/data4.json")
     .then(response => {
       return response.json();
     })
