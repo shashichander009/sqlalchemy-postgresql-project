@@ -9,13 +9,9 @@ We are using data released by [United Nations]( https://datahub.io/core/populati
 ## Language and Libraries
 
 This project is built with 
-
 Backend : Python 3.7.4
-
 Frontend : HTML, CSS, JavaScript
-
 Database : PostgresSQL
-
 Charting : Highcharts
 
 
@@ -38,7 +34,7 @@ pip install -r requirements.txt
 
 Go to the "backend" folder 
 
-First check if data.csv is present. If you can't find "data.csv" in the folder, download it from this [link]( https://datahub.io/core/population-growth-estimates-and-projections/r/population-estimates.csv) and place it in the root folder with the name "data.csv"
+First check if data.csv is present. If you can't find "data.csv" in the folder, download it from this [link]( https://datahub.io/core/population-growth-estimates-and-projections/r/population-estimates.csv) and place it there with the name "data.csv"
 
 
 Go to cred.py and change your username and password 
@@ -75,7 +71,7 @@ python3 -m http.server
 
 Now go the root folder then to the frontened folder.
 
-Open index.html 
+Open index.html in your favourite browser. 
 
 
 ### TO DELETE DATABASE 
@@ -85,13 +81,3 @@ Once you are done viewing charts, go to the backend folder and run
 ```bash
 python3 delete_db.py
 ```
-
-
-
-
-
-
-
-
-## Deployment
-No Deployment. Run this from your system
