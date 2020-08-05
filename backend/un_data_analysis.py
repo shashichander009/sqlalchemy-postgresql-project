@@ -2,6 +2,7 @@ import json
 from add_data import session
 from create_db import RegionData
 from sqlalchemy import and_, func
+import os
 
 ASEAN_COUNTRIES = [
     'Brunei Darussalam',
@@ -129,6 +130,8 @@ def asean_group_data_process():
 
 
 def main():
+    if not os.path.exists('json'):
+        os.makedirs('json')
     india_data_process()
     asean_data_process()
     saarc_data_process()

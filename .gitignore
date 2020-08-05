@@ -1,2 +1,5 @@
 .vscode
 psqlenv
+backend/json/*
+backend/__pycache__/*
+__pycache__
