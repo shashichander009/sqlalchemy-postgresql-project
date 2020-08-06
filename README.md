@@ -43,7 +43,7 @@ First check if data.csv is present. If you can't find "data.csv" in the folder, 
 
 Go to cred.py and change your username and password 
 
- To create our PostgreSQL database, run this command 
+ To create our PostgreSQL database, run this command. It will create two tables countries and unions. 
 
 ```bash
 python3 create_db.py
