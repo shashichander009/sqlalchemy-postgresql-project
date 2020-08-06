@@ -21,6 +21,13 @@ class RegionData(Base):
     population = Column('population', Float)
 
 
+class Union(Base):
+    __tablename__ = 'unions'
+    id = Column('id', Integer, primary_key=True)
+    name = Column('name', String)
+    country_id = Column('country_id', Integer)
+
+
 def main():
     if not database_exists(engine.url):
 

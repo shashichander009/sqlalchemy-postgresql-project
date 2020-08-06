@@ -1,36 +1,21 @@
 import json
 from add_data import session
-from create_db import RegionData
-from sqlalchemy import and_, func
+from create_db import RegionData, Union
+from sqlalchemy import and_, func, between
 import os
 
-ASEAN_COUNTRIES = [
-    'Brunei Darussalam',
-    'Cambodia',
-    'Indonesia',
-    "Lao People's Democratic Republic",
-    'Malaysia',
-    'Myanmar',
-    'Philippines',
-    'Singapore',
-    'Thailand',
-    'Viet Nam',
-]
 
-SAARC_COUNTRIES = [
-    'Afghanistan',
-    'Bangladesh',
-    'Bhutan',
-    'India',
-    'Maldives',
-    'Nepal',
-    'Pakistan',
-    'Sri Lanka',
-]
+def get_union_list(name):
+
+    union_qry = session.query(Union.country_id)
+
+    union_qry = union_qry.filter(Union.name == name)
+
+    return [i[0] for i in union_qry.all()]
 
 
-# PROBLEM NO 1
 # This function prepares a Bar Plot of India's population vs. years.
+
 
 def india_data_process():
     india_data = {}  # dict to store values
@@ -47,17 +32,19 @@ def india_data_process():
         fs.write(json.dumps(india_data))
 
 
-# PROBLEM NO 2
 # This function prepares the Bar Chart of population of ASEAN countries in 2014
-# ASEAN is a collection of South East Asian countries.
+
 
 def asean_data_process():
+
+    asean_countries = get_union_list("asean")
+
     asean_data = {}
 
     qry = session.query(RegionData.country, RegionData.population)
 
     qry = qry.filter(and_(RegionData.year == 2014,
-                          RegionData.country.in_(ASEAN_COUNTRIES)))
+                          RegionData.code.in_(asean_countries)))
 
     for row in qry.all():
         population_in_crores = round(row[1] / 10000, 2)
@@ -67,20 +54,19 @@ def asean_data_process():
         fs.write(json.dumps(asean_data))
 
 
-# PROBLEM NO 3
 # TOTAL population of SAARC countries over the past years
-# In this case for each year we have to calculate total
-# population of all SAARC countries.
-# Then plot a BAR CHART of Total SAARC population vs. year.
+
 
 def saarc_data_process():
+
+    saarc_countries = get_union_list("saarc")
 
     saarc_data = {}
 
     qry = session.query(RegionData.year, func.sum(
         RegionData.population))
 
-    qry = qry.filter(RegionData.country.in_(SAARC_COUNTRIES))
+    qry = qry.filter(RegionData.code.in_(saarc_countries))
 
     qry = qry.group_by(RegionData.year)
 
@@ -94,24 +80,21 @@ def saarc_data_process():
         fs.write(json.dumps(saarc_data))
 
 
-# PROBLEM NO 4
 # Grouped Bar Chart - ASEAN population vs. years
-# We will plot population of ASEAN countries as
-# groups over the years 2011 - 2015.
 
 def asean_group_data_process():
+
+    asean_countries = get_union_list("asean")
+
     asean_grp_data = {}
-    # In this dictionary we will store data of asean countries population
-    # The key will be concat of Year + Country
-    # The value will be population
 
     qry = session.query(RegionData.country,
                         RegionData.year,
                         RegionData.population)
 
     qry = qry.filter(
-        and_(RegionData.year >= 2011, RegionData.year <= 2015,
-             RegionData.country.in_(ASEAN_COUNTRIES)))
+        and_(between(RegionData.year, 2005, 2015),
+             RegionData.code.in_(asean_countries)))
 
     for row in qry.all():
         country = str(row[0])
@@ -132,10 +115,12 @@ def asean_group_data_process():
 def main():
     if not os.path.exists('json'):
         os.makedirs('json')
+
     india_data_process()
     asean_data_process()
     saarc_data_process()
     asean_group_data_process()
+
     print("JSON Prepared..")
 
 
