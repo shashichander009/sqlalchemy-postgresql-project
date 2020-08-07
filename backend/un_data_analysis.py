@@ -1,8 +1,8 @@
 import json
+import os
+from sqlalchemy import and_, func, between
 from add_data import session
 from create_db import RegionData, Union
-from sqlalchemy import and_, func, between
-import os
 
 
 def get_union_list(name):
@@ -11,7 +11,6 @@ def get_union_list(name):
     union_qry = union_qry.filter(Union.name == name)
 
     return [i[0] for i in union_qry.all()]
-
 
 # This function prepares a Bar Plot of India's population vs. years.
 

@@ -13,7 +13,7 @@ UNION_DICT = {
         462,
         524,
         586,
-        144
+        144,
     ],
     "asean": [
         96,
@@ -25,12 +25,14 @@ UNION_DICT = {
         608,
         702,
         764,
-        704
+        704,
     ]
 }
 
 
-Session = sessionmaker(bind=engine)
+Session = sessionmaker(
+    bind=engine,
+)
 session = Session()
 
 
