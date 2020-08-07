@@ -92,7 +92,7 @@ def asean_group_data_process():
                         RegionData.population)
 
     qry = qry.filter(
-        and_(between(RegionData.year, 2005, 2015),
+        and_(between(RegionData.year, 2011, 2015),
              RegionData.code.in_(asean_countries)))
 
     for row in qry.all():
