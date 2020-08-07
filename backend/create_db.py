@@ -29,8 +29,10 @@ class Union(Base):
 
 
 def main():
-    if not database_exists(engine.url):
+    if database_exists(engine.url):
+        print("Database already exists")
 
+    else:
         print("Database Not Present. Creating.....")
         # Create DB undata
         create_database(engine.url)
@@ -39,9 +41,6 @@ def main():
         Base.metadata.create_all(bind=engine)
 
         print("Database Created.....")
-
-    else:
-        print("Database already exists")
 
 
 if __name__ == '__main__':

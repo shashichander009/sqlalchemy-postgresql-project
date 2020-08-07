@@ -34,9 +34,9 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 
-def add_country_data():
+def add_population_data():
 
-    print("Adding Country Data. Wait for few seconds.....")
+    print("Adding Population Data. Wait for few seconds.....")
 
     with open('data.csv', 'r') as csv_file:
 
@@ -77,7 +77,7 @@ def add_union_data():
 
 
 def main():
-    add_country_data()
+    add_population_data()
     add_union_data()
 
 

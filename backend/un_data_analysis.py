@@ -8,7 +8,6 @@ import os
 def get_union_list(name):
 
     union_qry = session.query(Union.country_id)
-
     union_qry = union_qry.filter(Union.name == name)
 
     return [i[0] for i in union_qry.all()]
