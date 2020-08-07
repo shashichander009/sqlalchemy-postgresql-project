@@ -1,6 +1,5 @@
 "use strict";
 
-//  PROBLEM NO 1
 //  This function prepares a Bar Plot of India's population vs. years.
 
 function prepIndiaChart() {
@@ -55,9 +54,7 @@ function prepIndiaChart() {
     .catch(error => console.log(error));
 }
 
-//  PROBLEM NO 2
 //  This function prepares the Bar Chart of population of ASEAN countries in 2014
-//  ASEAN is a collection of South East Asian countries.
 
 function prepAseanChart() {
   fetch("/backend/json/data2.json")
@@ -120,11 +117,7 @@ function prepAseanChart() {
     .catch(error => console.log(error));
 }
 
-//  PROBLEM NO 3
 //  TOTAL population of SAARC countries over the past years
-//  In this case for each year we have to calculate total
-//  population of all SAARC countries.
-//  Then plot a BAR CHART of Total SAARC population vs. year.
 
 function prepSaarcChart() {
   fetch("/backend/json/data3.json")
@@ -178,10 +171,7 @@ function prepSaarcChart() {
     .catch(error => console.log(error));
 }
 
-//  PROBLEM NO 4
 //  Grouped Bar Chart - ASEAN population vs. years
-//  We will plot population of ASEAN countries as
-//  groups over the years 2011 - 2015.
 
 function prepAseanGroupChart() {
   fetch("/backend/json/data4.json")
