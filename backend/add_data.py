@@ -1,5 +1,5 @@
-from sqlalchemy.orm import sessionmaker
 import csv
+from sqlalchemy.orm import sessionmaker
 from create_db import RegionData, Union
 from create_db import engine
 

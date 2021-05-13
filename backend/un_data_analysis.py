@@ -70,6 +70,10 @@ def saarc_data_process():
 
     qry = qry.order_by(RegionData.year)
 
+
+
+    
+
     for row in qry.all():
         pop_in_crore = round(row[1] / 10000, 2)
         saarc_data[row[0]] = pop_in_crore
